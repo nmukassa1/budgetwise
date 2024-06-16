@@ -1,13 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGreaterThan } from "@fortawesome/free-solid-svg-icons";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { BudgetContext } from "../context/BudgetContext";
 
 function HeaderContainer({ title, categoryKey, color }) {
     const {state} = useContext(BudgetContext);
-    // Ensure that array is an array and calculate the total amount
-    const totalAmount = Array.isArray(state[categoryKey].items) ? state[categoryKey].items.reduce((acc, item) => acc + (item.amount || 0), 0) : 0;
-
+    const totalAmount = state[categoryKey].items.reduce((acc, item) => acc + (item.amount || 0), 0);
     return ( 
         <div className="header-container">
             <h3>

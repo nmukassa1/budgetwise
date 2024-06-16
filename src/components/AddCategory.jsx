@@ -8,7 +8,7 @@ function AddCategory({action, setIsEditing, categoryKey = ''}) {
     const {lastAddedItem} = state[categoryKey];
 
     function handleAdd() {
-        dispatch({type: action, payload: {}})
+        dispatch({type: action, payload: {name: 'New Item', amount: 0}})
     }
 
     useEffect(() => {

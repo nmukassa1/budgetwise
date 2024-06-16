@@ -7,19 +7,20 @@ import { BudgetContext } from '../context/BudgetContext';
 function EditBudgetItem({categoryKey, isEditing, setIsEditing}) {
     const [editText, setEditText] = useState("");
     const [editAmount, setEditAmount] = useState("");
-    const {dispatch} = useContext(BudgetContext);
+    const {state, dispatch} = useContext(BudgetContext);
 
     const inputNameRef = useRef();
     useEffect(() => {
         inputNameRef.current.focus();
     }, [])
+   
 
 
     const handleEditBudget = () => {
         if (editText.trim() === '' || editAmount.trim() === '') return;
         const itemId = isEditing;
         // console.log(itemId);
-        dispatch({key: categoryKey, type: EDIT_BUDGET, payload: { id: itemId, text: editText, amount: editAmount } });
+        dispatch({key: categoryKey, type: EDIT_BUDGET, payload: { id: itemId, text: editText, amount: Number(editAmount) } });
         setIsEditing(null);
     };
 

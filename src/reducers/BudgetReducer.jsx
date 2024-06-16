@@ -31,7 +31,7 @@ const initialState = {
             [key]: state[key].filter((item) => item.id !== action.payload.id),
         };
     }
-    function edit(key, state, action){
+    function saveEdit(key, state, action){
         return {
             // ...state,
             // [key]: state[key].map(item =>
@@ -68,7 +68,7 @@ const budgetReducer = (state, action) => {
             return remove('savings', state, action)
         case EDIT_BUDGET:
             // console.log(action)
-            return edit(action.key, state, action);
+            return saveEdit(action.key, state, action);
         default:
         return state;
     }

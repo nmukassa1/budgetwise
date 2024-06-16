@@ -6,7 +6,7 @@ import EditBudgetItem from './EditBudgetItem'
 function BudgetLisiItem({item, categoryKey, isEditing, setIsEditing}) {
 
     function handleEdit(){
-        console.log('Edit')
+        setIsEditing(item.id);
     }
     function handleDelete(){ }
     return ( 
