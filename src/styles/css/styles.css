@@ -88,8 +88,13 @@
 
 .edit-input-name, .edit-input-amount {
   border: none;
-  color: #999999;
   padding: 6px;
+}
+.edit-input-name::-moz-placeholder, .edit-input-amount::-moz-placeholder {
+  color: #999999;
+}
+.edit-input-name::placeholder, .edit-input-amount::placeholder {
+  color: #999999;
 }
 
 .edit-input-name {

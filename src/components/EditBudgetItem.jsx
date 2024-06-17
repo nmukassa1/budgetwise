@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTicket, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { BudgetContext } from '../context/BudgetContext';
 
-function EditBudgetItem({categoryKey, isEditing, setIsEditing}) {
-    const [editText, setEditText] = useState("");
-    const [editAmount, setEditAmount] = useState("");
+function EditBudgetItem({categoryKey, isEditing, setIsEditing, defaultName, defaultAmount}) {
+    const [editText, setEditText] = useState(defaultName || '');
+    const [editAmount, setEditAmount] = useState(defaultAmount || '');
     const {state, dispatch} = useContext(BudgetContext);
 
     const inputNameRef = useRef();
@@ -38,15 +38,19 @@ function EditBudgetItem({categoryKey, isEditing, setIsEditing}) {
             className='edit-input-name'
             type="text"
             placeholder={categoryKey.slice(0,1).toUpperCase() + categoryKey.slice(1)}
-            value={editText}
+            value={editText} 
             onChange={(e) => setEditText(e.target.value)}
             ref={inputNameRef}
+            max-scale="1"
             />
             <input
-             type='number' 
-             className='edit-input-amount' 
-             placeholder='Amount'
-             value={editAmount} onChange={(e) => setEditAmount(e.target.value)} />
+            type='number' 
+            className='edit-input-amount' 
+            placeholder='Amount'
+            value={editAmount}
+            onChange={(e) => setEditAmount(e.target.value)} 
+            max-scale="1"
+            />
         </>
     );
 }

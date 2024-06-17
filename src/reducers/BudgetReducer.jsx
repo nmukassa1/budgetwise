@@ -8,44 +8,56 @@ const ADD_SAVINGS = 'ADD_SAVINGS';
 const REMOVE_SAVINGS = 'REMOVE_SAVINGS';
 const EDIT_BUDGET = 'EDIT_BUDGET';
 
-const initialState = {
+// const initialState = {
+//     income: {items: [{ id: 1, name: 'Work', amount: 2000 }], lastAddedItem: null},
+//     expenses: {items: [{ id: 1, name: 'Rent', amount: 1000 }], lastAddedItem: null},
+//     debt: {items: [{ id: 1, name: 'Student Loan', amount: 200 }], lastAddedItem: null},
+//     savings: {items: [{ id: 1, name: 'Vacation', amount: 100 }], lastAddedItem: null}
+// }
+const budgetStructure = {
     income: {items: [{ id: 1, name: 'Work', amount: 2000 }], lastAddedItem: null},
     expenses: {items: [{ id: 1, name: 'Rent', amount: 1000 }], lastAddedItem: null},
     debt: {items: [{ id: 1, name: 'Student Loan', amount: 200 }], lastAddedItem: null},
     savings: {items: [{ id: 1, name: 'Vacation', amount: 100 }], lastAddedItem: null}
 }
-    function add(key, state, action){
-        const newItem = {id: Date.now(), name: action.payload.name, amount: action.payload.amount}
-        return {
-            ...state,
-            [key]: {
-                items: [...state[key].items, newItem],
-                lastAddedItem: newItem.id
-            }
-        }
-    };
 
-    function remove(key, state, action){
-        return {
-            ...state,
-            [key]: state[key].filter((item) => item.id !== action.payload.id),
-        };
-    }
-    function saveEdit(key, state, action){
-        return {
-            // ...state,
-            // [key]: state[key].map(item =>
-            //     item.id === action.payload.id ? { ...item, id: Date.now(), amount: action.payload.text } : item)
-            ...state,
-            [key]: {
-                ...state[key],
-                items: state[key].items.map(item => 
-                    item.id === action.payload.id ? { ...item, name: action.payload.text, amount: action.payload.amount } : item
-                ),
-                lastAddedItem: null
-            }
+
+const initialState = localStorage.getItem('budget') !== null ? JSON.parse(localStorage.getItem('budget')) : budgetStructure
+
+
+ 
+function add(key, state, action){
+    const newItem = {id: Date.now(), name: action.payload.name, amount: action.payload.amount}
+    return {
+        ...state,
+        [key]: {
+            items: [...state[key].items, newItem],
+            lastAddedItem: newItem.id
         }
     }
+};
+
+function remove(key, state, action){
+    return {
+        ...state,
+        [key]: state[key].filter((item) => item.id !== action.payload.id),
+    };
+}
+function saveEdit(key, state, action){
+    return {
+        // ...state,
+        // [key]: state[key].map(item =>
+        //     item.id === action.payload.id ? { ...item, id: Date.now(), amount: action.payload.text } : item)
+        ...state,
+        [key]: {
+            ...state[key],
+            items: state[key].items.map(item => 
+                item.id === action.payload.id ? { ...item, name: action.payload.text, amount: action.payload.amount } : item
+            ),
+            lastAddedItem: null
+        }
+    }
+}
 
 const budgetReducer = (state, action) => {
     switch (action.type) {

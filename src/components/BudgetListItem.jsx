@@ -12,7 +12,7 @@ function BudgetLisiItem({item, categoryKey, isEditing, setIsEditing}) {
     return ( 
             <li>
                 {isEditing == item.id ? (
-                    <EditBudgetItem categoryKey={categoryKey} isEditing={isEditing} setIsEditing={setIsEditing} />
+                    <EditBudgetItem categoryKey={categoryKey} isEditing={isEditing} setIsEditing={setIsEditing} defaultName={item.name} defaultAmount={item.amount} />
                 ):(
                     <>
                     <div className="budget-item__actions">

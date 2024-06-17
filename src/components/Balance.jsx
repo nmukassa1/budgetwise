@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {BudgetContext} from '../context/BudgetContext';
 
 const Balance = () => {
@@ -11,6 +11,11 @@ const Balance = () => {
   const totalSavings = savings.items.reduce((acc, item) => acc + item.amount, 0);
 
   const balance = totalIncome - totalExpenses - totalDebt - totalSavings;
+
+  useEffect(() => {
+    localStorage.setItem('budget', JSON.stringify(state));
+    // console.log(balance);
+  }, [state])
 
   return (
     <div className='balance'>
