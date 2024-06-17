@@ -13,13 +13,17 @@
     margin-top: 25px;
 }
 
-.toggle-height{
+.toggle-list{
     margin-left: auto;
-    .open{
-        text-align: center;
-        transform: rotate(90deg);
-    }
+    text-align: center;
+    transform: rotate(90deg);
 }
+
+.turn{
+    transform: rotate(-90deg);
+
+}
+
 
 .header-container{
     display: flex;
@@ -52,6 +56,10 @@
     .budget-item__amount{
         margin-left: auto;
     }
+}
+
+.show-list{
+    max-height: none;
 }
 
 .delete-btn, .edit-btn{
