@@ -3,12 +3,12 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useEffect } from 'react';
 import {BudgetContext} from '../context/BudgetContext';
 
-function AddCategory({action, setIsEditing, categoryKey = ''}) {
+function AddCategory({addItem, setIsEditing, categoryKey = ''}) {
     const {state, dispatch} = useContext(BudgetContext);
     const {lastAddedItem} = state[categoryKey];
 
     function handleAdd() {
-        dispatch({type: action, payload: {}})
+        dispatch({type: addItem, payload: {}})
     }
 
     useEffect(() => {

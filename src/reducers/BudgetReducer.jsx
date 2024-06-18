@@ -39,8 +39,11 @@ function add(key, state, action){
 
 function remove(key, state, action){
     return {
-        ...state,
-        [key]: state[key].filter((item) => item.id !== action.payload.id),
+       ...state, 
+         [key]: {
+            items: state[key].items.filter(item => item.id !== action.payload.id),
+            lastAddedItem: null
+         }
     };
 }
 function saveEdit(key, state, action){

@@ -1,14 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencil, faMinus } from '@fortawesome/free-solid-svg-icons'
-
+import {BudgetContext} from '../context/BudgetContext'
 import EditBudgetItem from './EditBudgetItem'
+import { useContext } from 'react';
 
-function BudgetLisiItem({item, categoryKey, isEditing, setIsEditing}) {
+function BudgetLisiItem({item, categoryKey, isEditing, setIsEditing, removeItem}) {
+
+    const {dispatch} = useContext(BudgetContext);
 
     function handleEdit(){
         setIsEditing(item.id);
     }
-    function handleDelete(){ }
+    function handleDelete(){ 
+        dispatch({type: removeItem, payload: {id: item.id}})
+    }
     return ( 
             <li>
                 {isEditing == item.id ? (

@@ -12,13 +12,13 @@ import AddCategory from './AddCategory';
 */
 
 
-function FinancialCategory({title, action, isEditing, setIsEditing, categoryKey = '', color}) {
+function FinancialCategory({title, addItem, removeItem, isEditing, setIsEditing, categoryKey = '', color}) {
     const budgetListRef = useRef()
     return (
         <BudgetContainer>
             <HeaderContainer budgetListRef={budgetListRef} title={title} categoryKey={categoryKey} color={color} />
-            <BudgetList budgetListRef={budgetListRef} categoryKey={categoryKey} isEditing={isEditing} setIsEditing={setIsEditing} />
-            <AddCategory action={action} setIsEditing={setIsEditing} categoryKey={categoryKey} />
+            <BudgetList budgetListRef={budgetListRef} removeItem={removeItem} categoryKey={categoryKey} isEditing={isEditing} setIsEditing={setIsEditing} />
+            <AddCategory addItem={addItem} setIsEditing={setIsEditing} categoryKey={categoryKey} />
         </BudgetContainer>
       );
 }

@@ -1,7 +1,7 @@
 // src/components/Expenses.jsx
 import React, { useContext, useState } from 'react';
 import { BudgetContext } from '../context/BudgetContext';
-import { ADD_SAVINGS } from '../reducers/BudgetReducer';
+import { ADD_SAVINGS, REMOVE_SAVINGS } from '../reducers/BudgetReducer';
 import FinancialCategory from './FinancialCategory';
 
 const Expenses = () => {
@@ -10,7 +10,7 @@ const Expenses = () => {
   const { savings } = state;
 
   return (
-    <FinancialCategory title="Savings" action={ADD_SAVINGS} isEditing={isEditing} setIsEditing={setIsEditing} categoryKey='savings' color='green' />
+    <FinancialCategory title="Savings" addItem={ADD_SAVINGS} removeItem={REMOVE_SAVINGS} isEditing={isEditing} setIsEditing={setIsEditing} categoryKey='savings' color='green' />
   );
 };
 
