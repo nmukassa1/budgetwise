@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 
 import BudgetContainer from './BudgetContainer';
 import HeaderContainer from './HeaderContainer';
-import BudgetList from './BudgetList';
+import List from './List';
 import AddCategory from './AddCategory';
 
 /*
@@ -14,13 +14,14 @@ import AddCategory from './AddCategory';
 */
 
 
-function FinancialCategory({title, addItem, removeItem, isEditing, setIsEditing, categoryKey = '', color}) {
+function FinancialCategory({title, addItem, removeItem, editMode, setEditMode, editItemId,
+    setEditItemId, categoryKey = '', color}) {
     const budgetListRef = useRef()
     return (
         <BudgetContainer>
             <HeaderContainer budgetListRef={budgetListRef} title={title} categoryKey={categoryKey} color={color} />
-            <BudgetList budgetListRef={budgetListRef} removeItem={removeItem} categoryKey={categoryKey} isEditing={isEditing} setIsEditing={setIsEditing} />
-            <AddCategory addItem={addItem} isEditing={isEditing} setIsEditing={setIsEditing} categoryKey={categoryKey} />
+            <List budgetListRef={budgetListRef} removeItem={removeItem} categoryKey={categoryKey} editMode={editMode} setEditMode={setEditMode} editItemId={editItemId} setEditItemId={setEditItemId} />
+            <AddCategory addItem={addItem} setEditMode={setEditMode} editItemId={editItemId} setEditItemId={setEditItemId} categoryKey={categoryKey} />
         </BudgetContainer>
       );
 }

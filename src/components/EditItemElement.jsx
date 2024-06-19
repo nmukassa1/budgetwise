@@ -1,31 +1,30 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import {EDIT_BUDGET} from '../reducers/BudgetReducer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTicket, faMinus, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { BudgetContext } from '../context/BudgetContext';
 
-function EditBudgetItem({categoryKey, isEditing, setIsEditing, defaultName, defaultAmount, removeItem, itemId}) {
+function EditItemElement({categoryKey, editMode, setEditMode, editItemId, defaultName, defaultAmount, removeItem, item}) {
     const [editText, setEditText] = useState(defaultName || '');
     const [editAmount, setEditAmount] = useState(defaultAmount || '');
     const {state, dispatch} = useContext(BudgetContext);
 
     const inputNameRef = useRef();
     const inputAmountRef = useRef();
+
     useEffect(() => {
         inputNameRef.current.focus();
     }, [])
-   
-
 
     const handleEditBudget = () => {
         if (editText.trim() === '' || editAmount === NaN || editAmount === undefined) return;
-        const itemId = isEditing;
-        dispatch({key: categoryKey, type: EDIT_BUDGET, payload: { id: itemId, text: editText, amount: Number(editAmount) } });
-        setIsEditing(null);
+        dispatch({key: categoryKey, type: EDIT_BUDGET, payload: { id: item.id, text: editText, amount: Number(editAmount) } });
+        setEditMode(false);
     };
 
     function handleDelete(){ 
-        dispatch({type: removeItem, payload: {id: itemId}})
+        dispatch({type: removeItem, payload: {id: item.id}})
+        setEditMode(false)
     }
 
     return ( 
@@ -62,4 +61,4 @@ function EditBudgetItem({categoryKey, isEditing, setIsEditing, defaultName, defa
     );
 }
 
-export default EditBudgetItem;
+export default EditItemElement;

@@ -1,10 +1,10 @@
 import './styles/css/styles.css'
 import React from 'react';
 import { BudgetProvider } from './context/BudgetContext';
-import Income from './components/Income';
-import Expenses from './components/Expenses';
-import Debt from './components/Debt';
-import Savings from './components/Savings';
+import Income from './components/categories/Income';
+import Expenses from './components/categories/Expenses';
+import Debt from './components/categories/Debt';
+import Savings from './components/categories/Savings';
 import Balance from './components/Balance';
 import Banner from './components/Banner';
 
