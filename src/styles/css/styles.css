@@ -79,6 +79,7 @@
   height: 22px;
   border-radius: 999px;
   position: relative;
+  color: white;
 }
 .delete-btn svg, .edit-btn svg {
   position: absolute;
@@ -89,7 +90,6 @@
 
 .delete-btn {
   background-color: #FF5A5F;
-  color: white;
 }
 
 .edit-btn {
