@@ -19,10 +19,10 @@ function AddCategory({addItem, isEditing, setIsEditing, categoryKey = ''}) {
     useEffect(() => {
         if (lastAddedItem !== null) {
             setIsEditing(state[categoryKey].lastAddedItem);
-            disableButton()
+            // disableButton()
         }
         else{
-           disableButton()
+        //    disableButton()
         }
     }, [lastAddedItem])
 
