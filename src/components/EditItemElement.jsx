@@ -7,7 +7,7 @@ import { BudgetContext } from '../context/BudgetContext';
 function EditItemElement({categoryKey, editMode, setEditMode, editItemId, defaultName, defaultAmount, removeItem, item}) {
     const [editText, setEditText] = useState(defaultName || '');
     const [editAmount, setEditAmount] = useState(defaultAmount || '');
-    const {state, dispatch} = useContext(BudgetContext);
+    const {dispatch} = useContext(BudgetContext);
 
     const inputNameRef = useRef();
     const inputAmountRef = useRef();
