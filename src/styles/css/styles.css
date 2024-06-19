@@ -3,6 +3,7 @@
   border-radius: 8px;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
   padding: 13px;
+  position: relative;
 }
 
 .add-category-btn {
@@ -11,6 +12,11 @@
 
 .budget-container + .budget-container {
   margin-top: 25px;
+}
+@media (width > 992px) {
+  .budget-container + .budget-container {
+    margin-top: 0;
+  }
 }
 
 .toggle-list {
@@ -38,6 +44,11 @@
   max-height: 130px;
   overflow: hidden;
 }
+@media (width > 992px) {
+  .budget-list {
+    height: 130px;
+  }
+}
 .budget-list li {
   display: flex;
   align-items: center;
@@ -56,6 +67,11 @@
 
 .show-list {
   max-height: none;
+}
+@media (width > 992px) {
+  .show-list {
+    height: auto;
+  }
 }
 
 .delete-btn, .edit-btn {
@@ -162,6 +178,14 @@ li {
   position: relative;
   width: 90vw;
   margin: 147px auto;
+}
+@media (width > 992px) {
+  #wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    align-items: start;
+  }
 }
 
 #banner {

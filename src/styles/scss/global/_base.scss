@@ -1,4 +1,4 @@
-// @import '../utilities/mixins';
+@use '../utilities/breakpoints' ; 
 h1,h2,h3,h4,h5{
     font-family: "Roboto", sans-serif;
     font-weight: 500;
@@ -40,6 +40,13 @@ li{
     position: relative;
     width: 90vw;
     margin: 147px auto;
+
+    @include breakpoints.up('lg'){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        align-items: start;
+    }
 }
 
 #banner{

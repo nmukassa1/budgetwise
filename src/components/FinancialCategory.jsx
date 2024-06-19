@@ -7,8 +7,10 @@ import AddCategory from './AddCategory';
 
 /*
     category: Title
-    action: What To Do
-    categoryKey: e.g {income: items: [], lastAddedItem: null}
+    addItem: Add item to budget list
+    removeItem: Remove item from budget list
+    categoryKey: income or expense or debt or savings
+    isEditing: pass item ID to check if user is editing & what item
 */
 
 
@@ -18,7 +20,7 @@ function FinancialCategory({title, addItem, removeItem, isEditing, setIsEditing,
         <BudgetContainer>
             <HeaderContainer budgetListRef={budgetListRef} title={title} categoryKey={categoryKey} color={color} />
             <BudgetList budgetListRef={budgetListRef} removeItem={removeItem} categoryKey={categoryKey} isEditing={isEditing} setIsEditing={setIsEditing} />
-            <AddCategory addItem={addItem} setIsEditing={setIsEditing} categoryKey={categoryKey} />
+            <AddCategory addItem={addItem} isEditing={isEditing} setIsEditing={setIsEditing} categoryKey={categoryKey} />
         </BudgetContainer>
       );
 }

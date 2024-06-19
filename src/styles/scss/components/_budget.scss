@@ -1,8 +1,11 @@
+@use '../utilities/breakpoints' ;
+
 .budget-container{
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
     padding: 13px;
+    position: relative;
 }
 
 .add-category-btn{
@@ -11,6 +14,9 @@
 
 .budget-container + .budget-container{
     margin-top: 25px;
+    @include breakpoints.up('lg'){
+        margin-top: 0;
+    }
 }
 
 .toggle-list{
@@ -40,6 +46,9 @@
 .budget-list{
     max-height: 130px;
     overflow: hidden;
+    @include breakpoints.up('lg'){
+        height: 130px;
+    }
     li{
         display: flex;
         align-items: center;
@@ -61,6 +70,9 @@
 
 .show-list{
     max-height: none;
+    @include breakpoints.up('lg'){
+        height: auto;
+    }
 }
 
 .delete-btn, .edit-btn{
