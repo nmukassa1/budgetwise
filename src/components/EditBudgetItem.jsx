@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import {EDIT_BUDGET} from '../reducers/BudgetReducer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTicket, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faTicket, faMinus, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { BudgetContext } from '../context/BudgetContext';
 
 function EditBudgetItem({categoryKey, isEditing, setIsEditing, defaultName, defaultAmount, removeItem, itemId}) {
@@ -35,7 +35,7 @@ function EditBudgetItem({categoryKey, isEditing, setIsEditing, defaultName, defa
                 <FontAwesomeIcon icon={faMinus} />
             </button>
             <button className="edit-btn" onClick={handleEditBudget}>
-                <FontAwesomeIcon icon={faTicket} />
+                <FontAwesomeIcon icon={faCheck} />
             </button>
         </div>
             <input
