@@ -26,7 +26,9 @@ function DefaultItemElement({item, setEditMode, setEditItemId, removeItem}) {
             </button>
         </div>
         <div className="budget-item__name">{item.name}</div>
-        <div className="budget-item__amount">{item.amount.toLocaleString('en-UK', {style: 'currency', currency: 'GBP'})}</div>
+        <div className="budget-item__amount">{
+            item.amount !== undefined ? item.amount.toLocaleString('en-UK', {style: 'currency', currency: 'GBP'}) : ''    
+        }</div>
         </>
      );
 }
