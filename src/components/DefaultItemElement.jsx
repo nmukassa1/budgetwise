@@ -11,14 +11,14 @@ function DefaultItemElement({item, setEditMode, setEditItemId, removeItem}) {
         setEditMode(true);
         setEditItemId(item.id)
     }
-    function handleDelete(){ 
+    function deleteItem(){ 
         dispatch({type: removeItem, payload: {id: item.id}})
     }
 
     return ( 
         <>
         <div className="budget-item__actions">
-            <button className="delete-btn" onClick={handleDelete}>
+            <button className="delete-btn" onClick={deleteItem}>
                 <FontAwesomeIcon icon={faMinus} />
             </button>
             <button className="edit-btn" onClick={handleEdit}>
@@ -26,7 +26,7 @@ function DefaultItemElement({item, setEditMode, setEditItemId, removeItem}) {
             </button>
         </div>
         <div className="budget-item__name">{item.name}</div>
-        <div className="budget-item__amount">{item.amount}</div>
+        <div className="budget-item__amount">{item.amount.toLocaleString('en-UK', {style: 'currency', currency: 'GBP'})}</div>
         </>
      );
 }

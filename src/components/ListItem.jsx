@@ -1,17 +1,39 @@
+import React from 'react';
 import DefaultItemElement from './DefaultItemElement';
-import EditItemElement from './EditItemElement'
+import EditItemElement from './EditItemElement';
 
+function ListItem({
+  item,
+  categoryKey,
+  editMode,
+  setEditMode,
+  removeItem,
+  editItemId,
+  setEditItemId, 
+}) {
+  const sharedProps = {
+    item,
+    categoryKey,
+    editMode,
+    setEditMode,
+    removeItem,
+    editItemId,
+    setEditItemId,
+  };
 
-function ListItem({item, categoryKey, editMode, setEditMode, removeItem, editItemId, setEditItemId}) {
-    
-    return ( 
-            <li>
-                {editMode && editItemId === item.id ? (
-                    <EditItemElement item={item} categoryKey={categoryKey} removeItem={removeItem} editItemId={editItemId} editMode={editMode} setEditMode={setEditMode} defaultName={item.name} defaultAmount={item.amount} />
-                ):(
-                    <DefaultItemElement item={item} setEditMode={setEditMode} setEditItemId={setEditItemId} removeItem={removeItem} />
-                )}
-            </li>
-)}
+  return (
+    <li>
+      {editMode && editItemId === item.id ? (
+        <EditItemElement
+          {...sharedProps}
+          defaultName={item.name}
+          defaultAmount={item.amount}
+        />
+      ) : (
+        <DefaultItemElement {...sharedProps} />
+      )}
+    </li>
+  );
+}
 
 export default ListItem;

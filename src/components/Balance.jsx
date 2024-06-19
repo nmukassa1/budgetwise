@@ -10,7 +10,7 @@ const Balance = () => {
   const totalDebt = debt.items.filter((item) => item.amount !== undefined).reduce((acc, item) => acc + item.amount, 0)
   const totalSavings = savings.items.filter((item) => item.amount !== undefined).reduce((acc, item) => acc + item.amount, 0)
 
-  const balance = totalIncome - totalExpenses - totalDebt - totalSavings;
+  const balance = (totalIncome - totalExpenses - totalDebt - totalSavings).toLocaleString('en-UK', {style: 'currency', currency: 'GBP'});
 
   useEffect(() => {
     localStorage.setItem('budget', JSON.stringify(state));
@@ -18,7 +18,7 @@ const Balance = () => {
 
   return (
     <div className='balance'>
-      <h3>Balance <span>£{balance}</span></h3>
+      <h3>Balance <span>{balance}</span></h3>
     </div>
   );
 };

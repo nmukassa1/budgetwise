@@ -18,7 +18,7 @@ function HeaderContainer({ title, categoryKey, color, budgetListRef }) {
         <div className="header-container">
             <h3>
                 {title}
-                <span style={{ color: color }}>£{totalAmount}</span>
+                <span style={{ color: color }}>{totalAmount.toLocaleString('en-UK', {style: 'currency', currency: 'GBP'})}</span>
             </h3>
             <button ref={arrowRef} onClick={toggleList} className='toggle-list'><FontAwesomeIcon icon={faGreaterThan} /></button>
         </div>
