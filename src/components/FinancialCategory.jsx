@@ -8,15 +8,17 @@ function FinancialCategory({
   title,
   addItem,
   removeItem,
-  editMode,
-  setEditMode,
-  editItemId,
-  setEditItemId,
   categoryKey = '',
   color
 }) {
   const budgetListRef = useRef();
+  const [editMode, setEditMode] = useState(false);
+  const [editItemId, setEditItemId] = useState(null);
   const [disableAdd, setDisableAdd] = useState(false);
+
+  useEffect(() => {
+    setDisableAdd(editMode);
+  }, [editMode]);
 
   const sharedProps = {
     budgetListRef,
@@ -30,10 +32,6 @@ function FinancialCategory({
     disableAdd,
     setDisableAdd
   };
-
-  useEffect(() => {
-    editMode ? setDisableAdd(true) : setDisableAdd(false)
-  }, [editMode])
 
   return (
     <BudgetContainer>
